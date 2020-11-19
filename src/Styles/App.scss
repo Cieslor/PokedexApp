@@ -1,0 +1,9 @@
+@import '~bootstrap/scss/bootstrap';
+@import './variables.scss';
+@import './Header/header';
+@import './SearchBar/searchbar';
+
+.app {
+  min-height: 100vh;
+  background-color: $blue;
+}
