@@ -1,0 +1,17 @@
+.pokemons-list {
+  min-height: 200px;
+
+  &__item {
+    min-width: 100px;
+    color: $white;
+
+    &-link,
+    &-link:hover {
+      color: inherit;
+    }
+  }
+
+  &__no-records {
+    color: $white;
+  }
+}
