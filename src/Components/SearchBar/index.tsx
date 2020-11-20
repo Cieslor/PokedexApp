@@ -1,11 +1,15 @@
 import React from 'react';
-import { useSearchActionsContext } from '../../Context/search.context';
+import {
+  useSearchActionsContext,
+  useSearchContext,
+} from '../../Context/search.context';
 
 interface ISearchBarProps {
   placeholder?: string;
 }
 
 const SearchBar = ({ placeholder }: ISearchBarProps) => {
+  const { searchValue } = useSearchContext();
   const setSearchValue = useSearchActionsContext();
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(() => ({
@@ -21,6 +25,7 @@ const SearchBar = ({ placeholder }: ISearchBarProps) => {
           type='search'
           onChange={handleSearch}
           placeholder={placeholder ? placeholder : 'Search for pokemons..'}
+          value={searchValue}
           aria-label='Search'
         />
       </form>

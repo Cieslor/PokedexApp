@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { useQuery } from 'react-query';
-import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
-import { POKEMON_API_URL, FETCH_ERROR_TEXT } from '../../Helpers/constants';
+import { POKEMON_API_URL } from '../../Helpers/constants';
 import { useSearchContext } from '../../Context/search.context';
+import errorToast from '../../Helpers/errorToast';
 
 interface IPokemonFetchItem {
   name: string;
@@ -14,11 +14,6 @@ const fetchPokemons = async (): Promise<any> => {
   const response = await fetch(`${POKEMON_API_URL}/pokemon/?limit=1050`);
   return await response.json();
 };
-
-const errorToast = () =>
-  toast.error(FETCH_ERROR_TEXT, {
-    position: toast.POSITION.TOP_RIGHT,
-  });
 
 const PokemonsList = () => {
   const { data, error, isLoading } = useQuery('pokemons', fetchPokemons);
@@ -57,7 +52,7 @@ const PokemonsList = () => {
                 className='pokemons-list__item-link'
                 to={{
                   pathname: `pokemons/${item.name}`,
-                  state: { url: item.url },
+                  state: { url: item.url, name: item.name },
                 }}
               >
                 {item.name}
