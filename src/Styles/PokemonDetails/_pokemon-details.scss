@@ -1,0 +1,25 @@
+.pokemon-details {
+  &__card {
+    width: 100%;
+    max-width: 400px;
+    min-height: 600px;
+
+    @include media-breakpoint-down(xs) {
+      min-height: 400px;
+    }
+
+    &-loader {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+    }
+  }
+
+  &__stats {
+    list-style: none;
+
+    &-item {
+      font-weight: 600;
+    }
+  }
+}

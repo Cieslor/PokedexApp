@@ -1,0 +1,9 @@
+.header {
+  &__title {
+    color: $white;
+
+    @include media-breakpoint-down(xs) {
+      font-size: 70px;
+    }
+  }
+}
